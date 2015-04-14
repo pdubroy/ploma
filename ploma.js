@@ -20,7 +20,7 @@ TODO: License
 // an HTML <canvas> Element element to render
 // strokes onto.
 //
-var Ploma = function(canvas) {
+var Ploma = function(canvas, optConfig) {
 
   //////////////////////////////////////////////
   // PUBLIC
@@ -270,8 +270,10 @@ var Ploma = function(canvas) {
   //////////////////////////////////////////////
 
   // DOM
+
+  var config = optConfig || {};
   var ctx = canvas.getContext('2d');
-  var paperColor = 'rgb(250, 245, 230)';
+  var paperColor = config.paperColor || 'rgb(250, 245, 230)';
   var w = canvas.getAttribute('width');
   var h = canvas.getAttribute('height');
   var w_4 = w * 4;
@@ -290,7 +292,7 @@ var Ploma = function(canvas) {
   var miny = 0.0;
   var maxy = 0.0;
   var textureSampleStep = 0;
-  var textureSamplesLength = 1e7;
+  var textureSamplesLength = config.textureSamplesLength || 1e7;
   var lastControlPoint = null;
   var filterWeight = 0.5;
   var filterWeightInverse = 1 - filterWeight;
@@ -301,7 +303,7 @@ var Ploma = function(canvas) {
   var penG = 20;//20;
   var penB = 55;//45;
   var pointCounter = 0;
-  var sample = 2;
+  var sample = config.sample || 2;
   var applyRendering = true;
 
   // Generate Texture Samples
