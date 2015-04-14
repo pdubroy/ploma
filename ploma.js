@@ -270,20 +270,14 @@ var Ploma = function(canvas) {
   //////////////////////////////////////////////
 
   // DOM
-  var canvas = canvas;
-  var w = 0;
-  var h = 0;
-  var w_4 = 0;
   var ctx = canvas.getContext('2d');
-  var imageData = null;
-  var imageDataData = new Uint8ClampedArray(w * h);
   var paperColor = 'rgb(250, 245, 230)';
-  w = canvas.getAttribute('width');
-  h = canvas.getAttribute('height');
-  w_4 = w * 4;
+  var w = canvas.getAttribute('width');
+  var h = canvas.getAttribute('height');
+  var w_4 = w * 4;
   ctx.imageSmoothingEnabled = false;
-  imageData = ctx.getImageData(0, 0, w, h);
-  imageDataData = imageData.data;
+  var imageData = ctx.getImageData(0, 0, w, h);
+  var imageDataData = imageData.data;
 
   // State
   var rawStrokes = [];
